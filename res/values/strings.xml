@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, HelloWorld!</string>
+    <string name="app_name">GL Viewer</string>
+    <string name="spider">Spider-Man</string>
+    <string name="shark">Shark</string>
+    <string name="cat">Cat</string>
+    <string name="cat_in_boots">Cat in Boots</string>
+    <string name="superman">SuperMan</string>
+
+</resources>

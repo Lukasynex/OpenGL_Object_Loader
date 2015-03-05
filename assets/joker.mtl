@@ -1,0 +1,86 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.3 x64 6.3.1.7959
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl wire_174186203
+Ka 0.682353 0.729412 0.796079
+Kd 0.682353 0.729412 0.796079
+Ks 0.35 0.35 0.35
+illum 2
+Ns 32
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Joker_Body_Mat_Option_2B
+Ka 1 1 1
+Kd 0.588 0.588 0.588
+Ks 0 0 0
+illum 2
+Ns 10
+map_Kd Joker_Body_D.tga
+map_bump Joker_Body_N.tga
+bump Joker_Body_N.tga
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA Joker_Body_D.tga
+map_Ns 
+
+newmtl material_0
+Ka 1 1 1
+Kd 0.588 0.588 0.588
+Ks 0 0 0
+illum 2
+Ns 10
+map_Kd Joker_Head_D.tga
+map_bump Joker_Head_N.tga
+bump Joker_Head_N.tga
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA Joker_Head_D.tga
+map_Ns 
+
+newmtl material_1
+Ka 1 1 1
+Kd 0.588 0.588 0.588
+Ks 0 0 0
+illum 2
+Ns 10
+map_Kd Joker_Hair_D.tga
+map_bump Joker_Hair_N.tga
+bump Joker_Hair_N.tga
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA Joker_Hair_D.tga
+map_Ns 
+
+newmtl Explorer_Default
+Ka 0.117647 0.117647 0.117647
+Kd 0.752941 0.752941 0.752941
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

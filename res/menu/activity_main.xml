@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/cat_in_boots"
+         android:title="@string/cat_in_boots"></item>
+    <item
+        android:id="@+id/spider"
+        android:title="@string/spider"></item>
+    <item
+        android:id="@+id/cat"
+        android:title="@string/cat"></item>
+    <item
+        android:id="@+id/shark"
+        android:title="@string/shark"></item>
+    <item
+        android:id="@+id/superman"
+        android:title="@string/superman"></item>
+    
+</menu>
