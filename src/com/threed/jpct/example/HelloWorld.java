@@ -29,8 +29,6 @@ import com.threed.jpct.World;
 import com.threed.jpct.util.BitmapHelper;
 import com.threed.jpct.util.MemoryHelper;
 
-
-
 /**
  * A simple demo. This shows more how to use jPCT-AE than it shows how to write
  * a proper application for Android. It includes basic activity management to
@@ -64,11 +62,14 @@ public class HelloWorld extends Activity {
 
 	private Light sun = null;
 	Texture texBack, texFront;
+
+
+	private boolean truizm = true;
+
 	protected void onCreate(Bundle savedInstanceState) {
 
 		Logger.log("onCreate");
 
-		
 		if (master != null) {
 			copy(master);
 		}
@@ -197,7 +198,7 @@ public class HelloWorld extends Activity {
 
 				sun = new Light(world);
 				sun.setIntensity(250, 250, 250);
-				
+
 				texFront = new Texture(BitmapHelper.rescale(
 						BitmapHelper.convert(getResources().getDrawable(
 								R.drawable.__auto_)), 256, 256));
@@ -208,13 +209,12 @@ public class HelloWorld extends Activity {
 								R.drawable.__auto_1)), 256, 256));
 				TextureManager.getInstance().addTexture("tex_back", texBack);
 
-				
-				kitty = loadCharacter("spider_man",20);
+				kitty = loadCharacter("shark", 10);
 				kitty.rotateX((float) Math.PI);
-//				kitty.setTexture("tex_back");
+				// kitty.setTexture("tex_back");
 
 				world.addObject(kitty);
-//				world.removeAll();
+				// world.removeAll();
 
 				Camera cam = world.getCamera();
 				cam.moveCamera(Camera.CAMERA_MOVEOUT, 50);
@@ -264,12 +264,17 @@ public class HelloWorld extends Activity {
 			fps++;
 		}
 	}
-	private Object3D loadCharacter(String model_name, float scale){
-		Object3D out=null;
-		Object3D[] outs=null;
+
+	private Object3D loadCharacter(String model_name, float scale) {
+		Object3D out = null;
+		Object3D[] outs = null;
 		try {
-			outs = Loader.loadOBJ(getResources().getAssets().open(model_name+".obj"), 
-					getResources().getAssets().open(model_name+".mtl"), scale);
+			outs = Loader
+					.loadOBJ(
+							getResources().getAssets()
+									.open(model_name + ".obj"), getResources()
+									.getAssets().open(model_name + ".mtl"),
+							scale);
 			outs[0].setTexture("tex_back");
 			outs[1].setTexture("tex_front");
 			outs[0].build();
@@ -277,13 +282,14 @@ public class HelloWorld extends Activity {
 			out = Object3D.mergeAll(outs);
 			out.build();
 			out.strip();
-				
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return out;
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -299,65 +305,48 @@ public class HelloWorld extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.spider:
-			world.removeAll();
-			kitty = loadCharacter("spider_man",20);
-			kitty.rotateX((float) Math.PI);
-			applyRest();
-
-			world.addObject(kitty);
+			applyRest("spider_man", 20);
 			return true;
 		case R.id.cat_in_boots:
-			world.removeAll();
-			kitty = loadCharacter("puss_in_boots",20);
-			kitty.rotateX((float) Math.PI);
-			applyRest();
-			
-			world.addObject(kitty);
+			applyRest("puss_in_boots", 20);
 			return true;
 		case R.id.shark:
-			world.removeAll();
-			kitty = loadCharacter("shark",10);
-			kitty.rotateX((float) Math.PI);
-			applyRest();
-			
-			world.addObject(kitty);
+			applyRest("shark", 10);
 			return true;
 		case R.id.superman:
-			world.removeAll();
-			kitty = loadCharacter("frizza",10);
-			kitty.rotateX((float) Math.PI);
-			applyRest();
-			
-			world.addObject(kitty);
+			applyRest("frizza", 10);
 			return true;
 		case R.id.cat:
-			world.removeAll();
-			kitty = loadCharacter("joker",1);
-			kitty.rotateX((float) Math.PI);
-			applyRest();
-			
-			world.addObject(kitty);
+			applyRest("joker",1);
 			return true;
-		
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	private void applyRest(){
-		world.setAmbientLight(20, 20, 20);
 
-		sun = new Light(world);
-		sun.setIntensity(250, 250, 250);
+	private void applyRest(String model_name, float scale) {
+		world.removeObject(kitty);;
+		kitty = loadCharacter(model_name, scale);
 		
+		
+		kitty.rotateX((float) Math.PI);
+//		world.setAmbientLight(20, 20, 20);
+//		sun = new Light(world);
+//		sun.setIntensity(250, 250, 250);
+
 		Camera cam = world.getCamera();
+		if(truizm ){
 		cam.moveCamera(Camera.CAMERA_MOVEOUT, 50);
+		truizm = false;}
 		cam.lookAt(kitty.getTransformedCenter());
 
 		SimpleVector sv = new SimpleVector();
 		sv.set(kitty.getTransformedCenter());
-		sv.y -= 100;
-		sv.z -= 100;
+		sv.y -= 200;
+		sv.z -= 200;
 		sun.setPosition(sv);
 		MemoryHelper.compact();
+		world.addObject(kitty);
+
 	}
 }
